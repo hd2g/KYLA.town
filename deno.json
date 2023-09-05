@@ -1,1 +1,22 @@
-{}
+{
+  "tasks": {
+    "download": "deno vendor src/**/*.ts -f",
+    "tests": "deno test -A src/**/*.test.ts",
+    "dev": "deno run -A main.ts"
+  },
+  "imports": {
+    "~/": "./"
+  },
+  "nodeModulesDir": true,
+  "test": {
+    "exclude": [
+      "./node_modules",
+      "vendor"
+    ]
+  },
+  "fmt": {
+    "semiColons": false,
+    "singleQuote": true
+  },
+  "importMap": "./vendor/import_map.json"
+}
