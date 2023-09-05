@@ -1,0 +1,13 @@
+* GatherとTypeScriptでつくるバーチャルオフィス
+
+** Getting Started
+
+*** 必要なパッケージをローカルに持ってくる
+#+begin_src bash
+deno vendor mod.ts
+#+end_src
+
+*** プログラムを実行する
+#+begin_src bash
+deno run -A mod.ts
+#+end_src
