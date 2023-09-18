@@ -2,6 +2,7 @@ import * as ENV from '~/env.ts'
 import { game } from '~/src/game.ts'
 import * as Bot from '~/src/bot.ts'
 import { defineBotCommand } from '~/src/bot.ts'
+import { defineSlashCommand } from '~/src/slash-command.ts'
 
 const bot = ENV.GATHER_BOT_NAME
 
@@ -30,5 +31,27 @@ defineBotCommand('hello', {
   },
   call(game, data, { message }) {
     Bot.chat(game, data, `Hello, ${message}`)
+  },
+})
+
+defineSlashCommand('teleport', {
+  game,
+  options: {
+    x: {
+      kind: 'flag',
+      type: 'integer',
+      description: 'The coodinates of x',
+    },
+    y: {
+      kind: 'flag',
+      type: 'integer',
+      description: 'The coodinates of y',
+    },
+  },
+  call(game, data, { x, y }) {
+    const { playerChats } = data
+    const playerId = playerChats.senderId
+
+    game.teleport('office-main', x as number, y as number, playerId)
   },
 })
