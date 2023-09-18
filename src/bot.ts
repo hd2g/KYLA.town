@@ -76,7 +76,9 @@ export const defineBotCommand = (
       const { playerChats } = data
       console.log(playerChats)
 
-      if (playerChats.senderName === bot) return
+      // NOTE: 勉強会ではBot == 自分のアカウント
+      //       ここで必ずreturnしてしまう為コメントアウト
+      // if (playerChats.senderName === bot) return
       if (!isBotCommand(bot, playerChats.contents)) return
 
       const [parsed, parser] = Options.safeParse({
