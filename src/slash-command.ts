@@ -1,5 +1,5 @@
 import { Game, GameEventByCase } from '~/deps/gather-game-client.ts'
-G
+
 import type { OptionParsingOptions } from '~/src/bot/options-parser.ts'
 import * as Options from '~/src/bot/options-parser.ts'
 import * as Bot from '~/src/bot.ts'
