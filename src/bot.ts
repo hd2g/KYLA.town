@@ -4,6 +4,7 @@ import { Game, GameEventByCase } from '~/deps/gather-game-client.ts'
 import type { DefineSlashCommandOptions } from '~/src/slash-command.ts'
 import * as Options from '~/src/bot/options-parser.ts'
 import type { ParseError, Parser } from '~/src/bot/options-parser.ts'
+import * as ENV from '~/env.ts'
 
 export const enter = (game: Game, name: string) => {
   game.enter({ name, isNpc: true })
@@ -79,6 +80,7 @@ export const defineBotCommand = (
       // NOTE: 勉強会ではBot == 自分のアカウント
       //       ここで必ずreturnしてしまう為コメントアウト
       // if (playerChats.senderName === bot) return
+      if (playerChats.senderName !== ENV.GATHER_OWNER_NAME) return
       if (!isBotCommand(bot, playerChats.contents)) return
 
       const [parsed, parser] = Options.safeParse({

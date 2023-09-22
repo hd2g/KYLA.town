@@ -1,8 +1,9 @@
 import { Game, GameEventByCase } from '~/deps/gather-game-client.ts'
-
+G
 import type { OptionParsingOptions } from '~/src/bot/options-parser.ts'
 import * as Options from '~/src/bot/options-parser.ts'
 import * as Bot from '~/src/bot.ts'
+import * as ENV from '~/env.ts'
 
 export interface DefineSlashCommandOptions<GameEvent, > {
   game: Game
@@ -30,6 +31,7 @@ export const defineSlashCommand = (
       const { playerChats } = data
       console.log({ playerChats })
 
+      if (playerChats.senderName !== ENV.GATHER_OWNER_NAME) return
       if (!isSlashCommand(playerChats.contents)) return
 
       const [parsed, parser] = Options.safeParse({
