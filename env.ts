@@ -3,6 +3,7 @@ import * as Dotenv from 'https://deno.land/std@0.201.0/dotenv/mod.ts'
 export const env = await Dotenv.load()
 
 export const {
+  GATHER_OWNER_NAME,
   GATHER_BOT_NAME,
   GATHER_API_KEY,
   GATHER_SPACE_ID,
